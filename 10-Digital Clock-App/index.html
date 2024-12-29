@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="Container">
+        <div class="Time-tages">
+            <h2 id="hours">00</h2>
+            <h2>-</h2>
+            <h2 id="minutes">00</h2>
+            <h2>-</h2>
+            <h2 id="secounds">00</h2>
+            <h2>-</h2>
+            <h2 id="ampm">PM</h2>
+        </div>
+    </div>
+
+    <script>
+        function displayTime() {
+            let date = new Date();
+
+            let hours = date.getHours()
+            let minutes = date.getMinutes()
+            let secounds = date.getSeconds()
+
+            //Adjust time 12 houres formar
+
+            let ampm = hours >= 12 ? "AM" : "PM";
+            hours = hours % 12 || 12; //Assign the 12 hours format
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0') // Add 0 = 1 to 9 Secounds
+            document.getElementById('minutes').innerHTML =minutes.toString().padStart(2, '0')
+            document.getElementById('secounds').innerHTML = secounds.toString().padStart(2, '0')
+        }
+
+
+        setInterval(displayTime, 1000)
+
+        displayTime();
+    </script>
+</body>
+
+</html>
